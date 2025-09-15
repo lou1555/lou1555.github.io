@@ -1131,57 +1131,71 @@ of each drug container to estimate the degradation of the drug.
 
   const projectList = [
     {
-      name: "Rescue Ranger",
-      alt: "rescue ranger",
-      description: "A search and rescue rover prototype.",
-      imagePath: "/assets/img/project-rover-logo.webp",
+      name: "Premier League Prediction",
+      alt: "PL Prediction",
+      description: "ML program that predicts total goals scored in a match based on team past performances and transfers.",
+      imagePath: "/assets/img/project-PL-logo.png",
       accomplishments: [
-        "Computer vision aided victim detection.",
-        "Visual representation of victim's location via map marker.",
-        "Autonomous terrain / debris navigation."
+        "Scraped historical match data from football-data.co.uk using BeautifulSoup.",
+        "Engineered features such as team form, head-to-head stats, and player transfers.",
+        "Trained regression models (Linear Regression, Random Forest, XGBoost) to predict total goals."
       ],
-      tools: "React, HTML, CSS, Bootstrap, Python, OpenCV",
-      onlineLink: "https://devpost.com/software/rescue-ranger",
-      sourceLink: "https://github.com/brettyang003/Rescue-Ranger"
+      tools: "Python, Pandas, Scikit-learn, BeautifulSoup",
     },
     {
-      name: "Ride Safe",
-      alt: "bike riding safety app",
-      description: "A car-bike collision prevention tool.",
-      imagePath: "/assets/img/project-ride-safe-logo.png",
+      name: "Accesiblity Building Mapper",
+      alt: "Map app",
+      description: "Map app that provides directions based on how accessible the route is",
+      imagePath: "/assets/img/project-accessibility-logo.png",
       accomplishments: [
-        "Locate bicycles near your car in real time.",
-        "Avoid collisions by increased awareness of surroundings"
+        "Identify accessible routes using OpenStreetMap data.",
+        "Provide step-by-step directions with accessibility ratings."
       ],
-      tools: "HTML, CSS, React, Firebase",
-      onlineLink: "https://devpost.com/software/ride-safe",
-      sourceLink: "https://github.com/Heluhan/Ride-Safe"
+      tools: "JavaScript, Leaflet.js, OpenStreetMap API",
     },
     {
-      name: "Gamified Language Learning",
-      alt: "language learning app",
-      description: "An AI-driven pronunciation assistant.",
-      imagePath: "/assets/img/project-language-logo.webp",
+      name: "Betting Odds Web Scrapper",
+      alt: "Odds Scraper",
+      description: "A web scraper that collects betting odds data from multiple sports betting websites.",
+      imagePath: "/assets/img/project-betting-odds-logo.png",
       accomplishments: [
-        "Get random sentences to practice your pronunciation.",
-        "Hear how the AI would pronounce your sentence."
+        "Scrape odds data from various betting sites using BeautifulSoup and Scrapy.",
+        "Store data in a structured format for analysis."
       ],
-      tools: "Python, Taipy, ChatGPT API",
-      onlineLink: "https://devpost.com/software/pronunciationgo",
-      sourceLink: "https://github.com/jempio/hackthenorth2023"
+      tools: "Python, BeautifulSoup, Scrapy, Pandas",
     },
     {
-      name: "Tour Guide",
-      alt: "tourist map",
-      description: "A tourism focused map application.",
-      imagePath: "/assets/img/project-tour-logo.jpg",
+      name: "Personal Portfolio Website",
+      alt: "Portfolio Website",
+      description: "A personal portfolio website to showcase projects and skills.",
+      imagePath: "/assets/img/project-portfolio-logo.png",
       accomplishments: [
-        "Plan your itinerary in the most efficient way.",
-        "Locate nearby attractions and restaurants."
+        "Designed and developed a responsive portfolio website using HTML, CSS, and JavaScript.",
+        "Implemented interactive features and animations to enhance user experience."
       ],
-      tools: "C++, OpenStreetMap, Git",
-      onlineLink: "",
-      sourceLink: ""
+      tools: "HTML, CSS, JavaScript",
+    },
+    {
+      name: "E-commerce Website",
+      alt: "E-commerce Website",
+      description: "An e-commerce website for buying and selling products online.",
+      imagePath: "/assets/img/project-ecommerce-logo.png",
+      accomplishments: [
+        "Developed a full-stack e-commerce application using Django for the backend and React for the frontend.",
+        "Implemented features such as product listings, shopping cart, and payment integration."
+      ],
+      tools: "Django, React, PostgreSQL",
+    },
+    {
+      name: "Chat Application",
+      alt: "Chat Application",
+      description: "A real-time chat application for users to communicate.",
+      imagePath: "/assets/img/project-chat-app-logo.png",
+      accomplishments: [
+        "Built a real-time chat application using Node.js and Socket.io.",
+        "Implemented user authentication and message storage."
+      ],
+      tools: "Node.js, Socket.io, MongoDB",
     }
   ];
 
@@ -1234,9 +1248,6 @@ of each drug container to estimate the degradation of the drug.
       container.innerHTML += projectCard;
       counter++;
     } 
-    if (counter >= projectList.length) {
-      document.getElementById("load-more-button").style.display = "none"; // Hide button when there are no more projects
-    }
   }
 
   document.addEventListener("DOMContentLoaded", function() {
@@ -1245,8 +1256,6 @@ of each drug container to estimate the degradation of the drug.
   });
 
 </script>
-
-
 </body>
 
 </html>

@@ -126,6 +126,13 @@
       </li>
 
       <li class="bold">
+        <!-- mdi-av-web small
+             mdi-av-my-library-books small-->
+        <a aria-label="Navigate to the Recent Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
+            class="mdi-av-my-library-books small"></i><span>Recent Projects</span></a>
+      </li>
+
+      <li class="bold">
         <a aria-label="Navigate to the Places Travelled section" href="#places-travelled" class="waves-effect waves-dark teal-text"><i
             class="mdi-action-wallet-travel small"></i><span>Places Travelled</span></a>
       </li>
@@ -184,6 +191,12 @@
         <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark red-text"><i
             class="mdi-av-my-library-books small"></i><span>Projects</span></a>
       </li>
+
+      <li class="bold">
+        <a aria-label="Navigate to the Recent Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
+            class="mdi-av-my-library-books small"></i><span>Recent Projects</span></a>
+      </li>
+
       <li class="bold">
         <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark red-text"><i
             class="mdi-action-assessment small"></i><span>Skills</span></a>
@@ -780,6 +793,18 @@ of each drug container to estimate the degradation of the drug.
       </div>
     </section>
 
+    <!-- Fourth Section: Recent Projects -->
+    <section id="projects" class="section scrollspy">
+      <h3 class="page-title white-text teal">Recent Projects</h3>
+      <div class="container">
+        <div class="row" id="project-container"></div>
+        <div id='load-more'>
+          <button id ="load-more-button">Load More</button>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Fifth Section: Skills -->
     <section id="skills" class="section scrollspy">
       <h3 class="page-title white-text red">Skills</h3>
@@ -1100,6 +1125,128 @@ of each drug container to estimate the degradation of the drug.
       })
     })
   </script>
+
+<!-- Dynamic Load of Most Recent Projects-->
+<script>
+
+  const projectList = [
+    {
+      name: "Rescue Ranger",
+      alt: "rescue ranger",
+      description: "A search and rescue rover prototype.",
+      imagePath: "/assets/img/project-rover-logo.webp",
+      accomplishments: [
+        "Computer vision aided victim detection.",
+        "Visual representation of victim's location via map marker.",
+        "Autonomous terrain / debris navigation."
+      ],
+      tools: "React, HTML, CSS, Bootstrap, Python, OpenCV",
+      onlineLink: "https://devpost.com/software/rescue-ranger",
+      sourceLink: "https://github.com/brettyang003/Rescue-Ranger"
+    },
+    {
+      name: "Ride Safe",
+      alt: "bike riding safety app",
+      description: "A car-bike collision prevention tool.",
+      imagePath: "/assets/img/project-ride-safe-logo.png",
+      accomplishments: [
+        "Locate bicycles near your car in real time.",
+        "Avoid collisions by increased awareness of surroundings"
+      ],
+      tools: "HTML, CSS, React, Firebase",
+      onlineLink: "https://devpost.com/software/ride-safe",
+      sourceLink: "https://github.com/Heluhan/Ride-Safe"
+    },
+    {
+      name: "Gamified Language Learning",
+      alt: "language learning app",
+      description: "An AI-driven pronunciation assistant.",
+      imagePath: "/assets/img/project-language-logo.webp",
+      accomplishments: [
+        "Get random sentences to practice your pronunciation.",
+        "Hear how the AI would pronounce your sentence."
+      ],
+      tools: "Python, Taipy, ChatGPT API",
+      onlineLink: "https://devpost.com/software/pronunciationgo",
+      sourceLink: "https://github.com/jempio/hackthenorth2023"
+    },
+    {
+      name: "Tour Guide",
+      alt: "tourist map",
+      description: "A tourism focused map application.",
+      imagePath: "/assets/img/project-tour-logo.jpg",
+      accomplishments: [
+        "Plan your itinerary in the most efficient way.",
+        "Locate nearby attractions and restaurants."
+      ],
+      tools: "C++, OpenStreetMap, Git",
+      onlineLink: "",
+      sourceLink: ""
+    }
+  ];
+
+  let counter = 0;
+
+  function createProjectCard(project) {
+    const accomplishmentsList = project.accomplishments.map(item => `<li>${item}</li>`).join(''); // Convert array of accomplishments to list items
+  
+    return `
+      <div class="col s12 m6 l4">
+        <div class="card medium">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img alt="${project.alt}" src="${project.imagePath}" style="height: 100%; width: 100%" class="activator" />
+          </div>
+          <div class="card-content">
+            <span class="card-title activator teal-text hoverline">${project.name}<i
+                class="mdi-navigation-more-vert right"></i></span>
+            <p>
+            ${project.description}
+            </p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text"><small>Accomplishments</small><i
+                class="mdi-navigation-close right"></i></span>
+            <ul>
+              <li><b>Tools:</b> ${project.tools}</li>
+              ${accomplishmentsList}
+            </ul>
+            <div class="card-action">
+              <a aria-label="Visit " href="${project.onlineLink}" target="_blank" data-position="top"
+                data-tooltip="View Online"
+                class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
+                  class="fa fa-external-link"></i></a>
+              <a aria-label="Visit the GitHub repo for  project" href="${project.sourceLink}"
+                target="_blank" data-position="top" data-tooltip="View Source"
+                class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
+                  class="fa fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </div> 
+    `;
+  }
+
+  function loadNextProject() {
+    const container = document.getElementById("project-container");
+
+    if (counter < projectList.length) {
+      const projectCard = createProjectCard(projectList[counter]);
+      container.innerHTML += projectCard;
+      counter++;
+    } 
+    if (counter >= projectList.length) {
+      document.getElementById("load-more-button").style.display = "none"; // Hide button when there are no more projects
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    loadNextProject(); // Load the first project on page load
+    document.getElementById("load-more-button").addEventListener("click", loadNextProject); // load next project on button click
+  });
+
+</script>
+
+
 </body>
 
 </html>
